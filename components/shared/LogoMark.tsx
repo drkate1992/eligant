@@ -45,11 +45,13 @@ export function LogoLockup({
 }
 
 /**
- * The EligantWealth logo, dark-theme variant. Uses /logo-dark.png
- * (navy artwork recolored to cream, green kept, transparent background — see
- * scripts/process-logo.mjs) so it blends directly on the dark navy theme with
- * no white tile. `height` is the rendered height in px.
+ * The EligantWealth brand badge for dark areas (landing header/footer, auth panels).
+ * The logo artwork (public/logo-dark.png) has dark lettering, so it sits on a
+ * white rounded chip to stay legible on the dark navy theme. `height` is the
+ * overall chip height in px.
  */
+const LOGO_ASPECT = 500 / 256; // public/logo-dark.png dimensions
+
 export function BrandBadge({
   height = 40,
   className,
@@ -57,15 +59,25 @@ export function BrandBadge({
   height?: number;
   className?: string;
 }) {
-  const width = Math.round(height * (781 / 606)); // cropped logo aspect ratio
+  const logoH = Math.round(height * 0.66);
+  const logoW = Math.round(logoH * LOGO_ASPECT);
   return (
-    <Image
-      src="/logo-dark.png"
-      alt="EligantWealth"
-      width={width}
-      height={height}
-      priority
-      className={cn("object-contain", className)}
-    />
+    <span
+      className={cn(
+        "inline-flex items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-black/5",
+        className,
+      )}
+      style={{ height, paddingInline: Math.round(height * 0.22) }}
+    >
+      <Image
+        src="/logo-dark.png"
+        alt="EligantWealth"
+        width={logoW}
+        height={logoH}
+        priority
+        style={{ height: logoH, width: "auto" }}
+        className="object-contain"
+      />
+    </span>
   );
 }
