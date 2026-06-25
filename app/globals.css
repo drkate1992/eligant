@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0d1b2a;
+  --navy-mid: #162132;
+  --navy-light: #1e2f44;
+  --navy-card: #192843;
+  /* Brand accent — emerald green from the Unity Financial logo */
+  --brand: #1ca65f;
+  --brand-light: #34c47b;
+  --brand-dim: #14834a;
+  --brand-navy: #16294d;
+  --cream: #f5f0e8;
+  --text-primary: #eef3f0;
+  --text-secondary: #a8b8cc;
+  --text-muted: #6a7f96;
+  --green: #34c47b;
+  --red: #e05c5c;
+  --border: rgba(28, 166, 95, 0.16);
+  --sidebar-w: 260px;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  background: var(--navy);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11", "ss01";
+  letter-spacing: -0.011em;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display), "Plus Jakarta Sans", var(--font-sans), sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Tabular figures for aligned financial numbers */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-mid);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dim);
+}
+
+/* ── Inputs (autofill fix on dark theme) ── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+  -webkit-box-shadow: 0 0 0 1000px var(--navy-card) inset;
+  caret-color: var(--text-primary);
+}
+
+/* ── Dropdowns: keep the native option popup dark (control stays bg-navy-card) ── */
+select option,
+select optgroup {
+  background-color: var(--navy-card);
+  color: var(--text-primary);
+}
+
+/* ── Reusable component classes (extracted from the HTML design) ── */
+@layer components {
+  .ufg-card {
+    @apply rounded-card border border-line bg-navy-card p-6;
+  }
+  .ufg-input {
+    @apply w-full rounded-xl border border-white/10 bg-navy-card px-4 py-3 text-sm text-ink-primary outline-none transition placeholder:text-ink-muted focus:border-brand focus:ring-2 focus:ring-brand/10;
+  }
+  .ufg-label {
+    @apply mb-2 block text-[11px] font-medium uppercase tracking-wider text-ink-muted;
+  }
+  .ufg-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-brand to-brand-dim px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-px hover:shadow-[0_10px_32px_rgba(28,166,95,0.35)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none;
+  }
+  .ufg-btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-transparent px-4 py-2.5 text-sm font-medium text-ink-primary transition hover:border-brand hover:text-brand;
+  }
+  .ufg-chip {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-line bg-white/[0.04] px-3 py-1.5 text-xs text-ink-secondary;
+  }
+  .ufg-link {
+    @apply inline-flex items-center gap-1.5 text-xs text-brand transition hover:gap-2.5 hover:text-brand-light;
+  }
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.4s; }
+.delay-6 { animation-delay: 0.48s; }
+
+/* ── Skeleton shimmer ── */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}

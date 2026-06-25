@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id              String               @id @default(cuid())
+  email           String               @unique
+  passwordHash    String?
+  name            String?
+  firstName       String?
+  lastName        String?
+  phone           String?
+  country         String?
+  dateOfBirth     DateTime?
+  emailVerified   DateTime?
+  image           String?
+  avatarUrl       String?
+  role            String               @default("USER")
+  kycStatus       String               @default("PENDING")
+  twoFAEnabled    Boolean              @default(false)
+  loginOtpHash    String?
+  loginOtpExpires DateTime?
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+  accounts        BankAccount[]
+  transactions    Transaction[]
+  beneficiaries   Beneficiary[]
+  goals           SavingsGoal[]
+  notifications   Notification[]
+  resetTokens     PasswordResetToken[]
+}
+
+model BankAccount {
+  id            String        @id @default(cuid())
+  userId        String
+  type          String
+  name          String
+  accountNumber String        @unique
+  sortCode      String
+  balance       Decimal       @default(0) @db.Decimal(18, 2)
+  currency      String        @default("USD")
+  isDefault     Boolean       @default(false)
+  isFrozen      Boolean       @default(false)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions  Transaction[]
+
+  @@index([userId])
+}
+
+model Transaction {
+  id            String       @id @default(cuid())
+  userId        String
+  bankAccountId String
+  type          String
+  category      String
+  amount        Decimal      @db.Decimal(18, 2)
+  currency      String       @default("USD")
+  description   String
+  reference     String       @unique
+  status        String       @default("PENDING")
+  metadata      String?
+  processedAt   DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bankAccount   BankAccount  @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([bankAccountId])
+}
+
+model Beneficiary {
+  id            String   @id @default(cuid())
+  userId        String
+  name          String
+  accountNumber String
+  bankName      String?
+  bankCode      String?
+  country       String   @default("US")
+  isFavorite    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model SavingsGoal {
+  id           String    @id @default(cuid())
+  userId       String
+  name         String
+  emoji        String    @default("🎯")
+  targetAmount Decimal   @db.Decimal(18, 2)
+  savedAmount  Decimal   @default(0) @db.Decimal(18, 2)
+  targetDate   DateTime?
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  body      String
+  type      String   @default("INFO")
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model EmailOtp {
+  id         String    @id @default(cuid())
+  email      String    @unique
+  codeHash   String
+  expiresAt  DateTime
+  verifiedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  token     String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
