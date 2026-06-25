@@ -79,7 +79,7 @@ export default function DashboardPage() {
             <div className="grid gap-4 sm:grid-cols-[320px_1fr] sm:items-center">
               <VirtualCard account={primary} holder={holder} />
               <div className="text-sm text-ink-muted">
-                <p>Your Unity virtual card is active and ready for secure online payments.</p>
+                <p>Your EligantWealth virtual card is active and ready for secure online payments.</p>
                 <Link href="/cards" className="mt-3 inline-block">
                   <Button variant="outline"><CreditCard size={15} /> Apply for New Card</Button>
                 </Link>

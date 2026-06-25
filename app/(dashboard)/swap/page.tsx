@@ -112,7 +112,7 @@ export default function SwapPage() {
           <Card>
             <div className="flex items-start gap-3 text-xs text-ink-muted">
               <Info size={15} className="mt-0.5 shrink-0 text-brand" />
-              Rates are indicative and refresh every 60 seconds. No conversion fees on Unity Financial accounts.
+              Rates are indicative and refresh every 60 seconds. No conversion fees on EligantWealth accounts.
             </div>
           </Card>
         </div>

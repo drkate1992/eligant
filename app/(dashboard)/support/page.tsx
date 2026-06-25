@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 const CHANNELS = [
   { icon: MessageCircle, label: "Live Chat", value: "Avg. wait < 2 min", action: "Start chat", color: "#1ca65f" },
   { icon: Phone, label: "Call Us", value: "1-800-BANKING", action: "24/7 support", color: "#6a8fc8" },
-  { icon: Mail, label: "Email", value: "support@unityfinancial.com", action: "Reply in 24h", color: "#c8a76a" },
+  { icon: Mail, label: "Email", value: "support@eligantwealth.com", action: "Reply in 24h", color: "#c8a76a" },
 ];
 
 const FAQS = [

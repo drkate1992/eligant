@@ -144,7 +144,7 @@ export function PrimaryAccountCard({
                 <Landmark size={20} />
               </span>
               <div>
-                <div className="font-display text-lg font-bold">Unity Financial Group</div>
+                <div className="font-display text-lg font-bold">EligantWealth</div>
                 <div className="text-xs text-white/70">Primary Account</div>
               </div>
             </div>
@@ -248,7 +248,7 @@ function BankDetailsModal({
     <Modal open={open} onClose={onClose} title="Bank Details" subtitle="Share these to receive payments">
       <div className="space-y-2.5">
         <CopyLine label="Account Holder" value={holder} />
-        <CopyLine label="Bank Name" value="Unity Financial Group" />
+        <CopyLine label="Bank Name" value="EligantWealth" />
         <CopyLine label="Account Number" value={account.accountNumber} />
         <CopyLine label="Routing Number" value={ROUTING} />
         <CopyLine label="Sort Code" value={account.sortCode ?? "04-29-18"} />

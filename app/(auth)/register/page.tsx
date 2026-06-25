@@ -148,7 +148,7 @@ export default function RegisterPage() {
         router.push("/login");
         return;
       }
-      toast.success("Welcome to Unity Financial!", "Your account is ready.");
+      toast.success("Welcome to EligantWealth!", "Your account is ready.");
       router.push("/dashboard");
       router.refresh();
     } catch (e) {
@@ -166,7 +166,7 @@ export default function RegisterPage() {
           Create your account
         </h2>
         <p className="text-sm text-ink-muted">
-          Join Unity Financial Group in four quick steps.
+          Join EligantWealth in four quick steps.
         </p>
       </div>
 

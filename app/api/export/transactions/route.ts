@@ -71,7 +71,7 @@ export async function GET(req: Request) {
     return new Response(csv, {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="unity-transactions-${Date.now()}.csv"`,
+        "Content-Disposition": `attachment; filename="eligantwealth-transactions-${Date.now()}.csv"`,
       },
     });
   } catch (err) {

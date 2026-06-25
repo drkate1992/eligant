@@ -69,7 +69,7 @@ export async function POST(req: Request) {
           type: "CREDIT",
           category: "REFUND",
           amount: new Prisma.Decimal(500),
-          description: "Welcome bonus — Unity Financial Group",
+          description: "Welcome bonus — EligantWealth",
           reference: generateReference(),
           status: "COMPLETED",
           processedAt: new Date(),
@@ -79,7 +79,7 @@ export async function POST(req: Request) {
       await tx.notification.create({
         data: {
           userId: user.id,
-          title: "Welcome to Unity Financial",
+          title: "Welcome to EligantWealth",
           body: "Your account is ready. We've added a $500 welcome bonus to get you started.",
           type: "INFO",
         },

@@ -18,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Unity Financial Group | Private Banking",
+  title: "EligantWealth | Private Banking",
   description:
     "Access your full financial portfolio, initiate international transfers, and track every transaction — all in one secure, elegantly designed platform.",
   icons: { icon: "/logo.png" },

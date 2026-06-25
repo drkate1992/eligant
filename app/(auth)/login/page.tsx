@@ -185,7 +185,7 @@ export default function LoginPage() {
           Welcome back
         </h2>
         <p className="text-sm text-ink-muted">
-          Sign in to your Unity Financial account to continue.
+          Sign in to your EligantWealth account to continue.
         </p>
       </div>
 

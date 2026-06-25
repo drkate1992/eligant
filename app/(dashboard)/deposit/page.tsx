@@ -47,7 +47,7 @@ export default function DepositPage() {
 
   return (
     <div>
-      <PageHeader title="Deposit" subtitle="Add funds to your Unity Financial account" />
+      <PageHeader title="Deposit" subtitle="Add funds to your EligantWealth account" />
 
       <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
         <Card className="space-y-5">
@@ -71,7 +71,7 @@ export default function DepositPage() {
               <p className="text-sm text-ink-secondary">
                 Transfer funds from another bank using the details below. Deposits usually clear within 1 business day.
               </p>
-              <CopyRow label="Account Name" value={primary ? "Unity Financial Group" : "—"} />
+              <CopyRow label="Account Name" value={primary ? "EligantWealth" : "—"} />
               <CopyRow label="Account Number" value={primary?.accountNumber ?? "—"} />
               <CopyRow label="Routing Number" value={ROUTING} />
               <CopyRow label="Sort Code" value={primary?.sortCode ?? "04-29-18"} />

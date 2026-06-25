@@ -124,7 +124,7 @@ export default function LandingPage() {
               FDIC insured · Member-owned banking
             </div>
             <h1 className="font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
-              Unity Financial Group
+              EligantWealth
             </h1>
             <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-secondary">
               We do banking differently. We believe that people come first, and
@@ -363,7 +363,7 @@ export default function LandingPage() {
           <div className="relative">
             <Image
               src="/people.jpg"
-              alt="A Unity Financial relationship manager greeting a client"
+              alt="A EligantWealth relationship manager greeting a client"
               width={1200}
               height={800}
               className="h-full w-full rounded-3xl border border-line object-cover shadow-2xl"
@@ -464,7 +464,7 @@ export default function LandingPage() {
             Ready to bank brilliantly?
           </h2>
           <p className="relative mx-auto mt-4 max-w-md text-ink-secondary">
-            Join Unity Financial Group today — it takes less than two minutes.
+            Join EligantWealth today — it takes less than two minutes.
           </p>
           <Link href="/register" className="relative mt-8 inline-block">
             <Button size="lg">
@@ -508,7 +508,7 @@ export default function LandingPage() {
           </div>
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row">
             <p className="text-xs text-ink-muted">
-              © 2026 Unity Financial Group. All rights reserved. Member FDIC.
+              © 2026 EligantWealth. All rights reserved. Member FDIC.
             </p>
             <div className="flex gap-5 text-xs text-ink-muted">
               <span className="flex items-center gap-1.5">

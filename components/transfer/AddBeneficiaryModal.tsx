@@ -65,7 +65,7 @@ export function AddBeneficiaryModal({
         <div>
           <Label>Bank Name (optional)</Label>
           <Input
-            placeholder="Unity Financial"
+            placeholder="EligantWealth"
             value={bankName}
             onChange={(e) => setBankName(e.target.value)}
           />

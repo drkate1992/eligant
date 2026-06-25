@@ -38,7 +38,7 @@ export default function TaxRefundPage() {
         </div>
         <h2 className="font-display text-2xl font-bold text-ink-primary">Refund claim submitted</h2>
         <p className="mt-2 text-sm text-ink-muted">
-          Your {form.year} tax refund claim is being processed. Approved refunds are paid directly to your Unity Financial account within 21 days.
+          Your {form.year} tax refund claim is being processed. Approved refunds are paid directly to your EligantWealth account within 21 days.
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Button variant="outline" onClick={() => setSubmitted(false)}>New Claim</Button>

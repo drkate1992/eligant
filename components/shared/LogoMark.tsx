@@ -34,7 +34,7 @@ export function LogoLockup({
       <LogoMark size={40} />
       <div className="flex flex-col">
         <span className="font-display text-base font-semibold leading-tight text-ink-primary">
-          Unity Financial
+          EligantWealth
         </span>
         <span className="text-[10px] uppercase tracking-[1.5px] text-brand">
           {subtitle}
@@ -45,7 +45,7 @@ export function LogoLockup({
 }
 
 /**
- * The Unity Financial Group logo, dark-theme variant. Uses /logo-dark.png
+ * The EligantWealth logo, dark-theme variant. Uses /logo-dark.png
  * (navy artwork recolored to cream, green kept, transparent background — see
  * scripts/process-logo.mjs) so it blends directly on the dark navy theme with
  * no white tile. `height` is the rendered height in px.
@@ -61,7 +61,7 @@ export function BrandBadge({
   return (
     <Image
       src="/logo-dark.png"
-      alt="Unity Financial Group"
+      alt="EligantWealth"
       width={width}
       height={height}
       priority
